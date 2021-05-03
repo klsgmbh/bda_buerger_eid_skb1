@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<dialog name="buerger_eid_skb1" generate-roadmap="true">
+  <options>
+    <option name="readyingSubforms">false</option>
+    <option name="scriptEngine">rhino</option>
+  </options>
+  <page name="Bürger SKB1" path="buerger-skb1" id="buerger-skb1" model-src="Bürger SKB1.1289">
+    <title>Bürger SKB1</title>
+    <resource id="rbsurl" location="js:{myForm.transaction ? 'vfs:///root/intelliForm-Mandanten/default/Ressourcen/xml/rbs_url.xml' : '/WEB-INF/data/rbs_url.xml' }" range="CONTEXT"/>
+    <group>
+      <title>Personendaten</title>
+      <documentation><![CDATA[<p>G00000188</p>]]></documentation>
+      <tooltip><![CDATA[<p>G00000188</p>]]></tooltip>
+      <infobox name="Infoeid" condition="iseID()">
+        <display-text><![CDATA[<p>{{getpersondata()}}</p>]]></display-text>
+      </infobox>
+      <field name="anredeh" id="anredeh" type="choice" required="false" aux="true" read-only="false" repeated="false" style-class="2_hide_eid" control-style="combobox" default-value-expression="iseID() ? &quot;&quot; : isSKB() ? getSKBPrefix() : &quot;&quot;">
+        <label label-style="prefix">Anrede</label>
+        <title>Anrede</title>
+        <option value="">keine Anrede</option>
+        <option>Frau</option>
+        <option>Herr</option>
+      </field>
+      <field name="F00000043_h" id="f00000043_h" type="choice" required="false" aux="true" read-only="false" repeated="false" style-class="2_hide_eid" control-style="combobox" default-value-expression="iseID() ? geteIDAcademicTitle() : isSKB() ? getSKBTitle() : &quot;&quot;">
+        <label label-style="prefix">Titel</label>
+        <title>Titel</title>
+        <option value="">kein Titel</option>
+        <option>Dr.</option>
+        <option>Dr. h.c.</option>
+        <option>Prof.</option>
+        <option>Prof. Dr.</option>
+        <option>Prof. Dr. Dr.</option>
+      </field>
+      <field name="F00000013_h" id="f00000013_h" type="text" required="true" aux="true" read-only="false" style-class="2_hide_eid" default-value-expression="iseID() ? geteIDFamilyNames() : isSKB() ? getSKBLastname() : &quot;&quot;">
+        <label label-style="prefix">Familienname</label>
+        <title>Familienname</title>
+      </field>
+      <field name="F00000045_h" id="f00000045_h" type="text" required="true" aux="true" read-only="false" style-class="2_hide_eid" default-value-expression="iseID() ? geteIDGivenNames() : isSKB() ? getSKBFirstname() : &quot;&quot;">
+        <label label-style="prefix">Vorname</label>
+        <title>Vorname</title>
+      </field>
+      <field name="F00000066_h" id="f00000066_h" type="date" required="false" aux="true" read-only="false" style-class="2_hide_eid" default-value-expression="iseID() ? geteIDDateOfBirth() : isSKB() ? (myForm.user.dateofbirth) ? getSKBDate(myForm.user.dateofbirth) : &quot;&quot; : &quot;&quot;">
+        <label label-style="prefix">Geburtsdatum</label>
+        <title>Geburtsdatum</title>
+      </field>
+      <field name="F00000014_h" id="f00000014_h" type="text" required="false" aux="true" read-only="false" style-class="2_hide_eid" default-value-expression="iseID() ? geteIDBirthName() : &quot;&quot;">
+        <label label-style="prefix">Geburtsname</label>
+        <title>Geburtsname</title>
+      </field>
+      <field name="anrede" id="anrede" type="computed" required="false" read-only="false" value-expression="myForm.anredeh">
+        <label label-style="prefix">Anrede:</label>
+        <title>Anrede</title>
+      </field>
+      <field name="f00000043" id="f00000043" type="computed" required="false" read-only="false" value-expression="myForm.F00000043_h">
+        <label label-style="prefix">F00000043:</label>
+        <title>F00000043</title>
+      </field>
+      <field name="f00000013" id="f00000013" type="computed" required="false" read-only="false" value-expression="myForm.F00000013_h">
+        <label label-style="prefix">F00000013:</label>
+        <title>F00000013</title>
+      </field>
+      <field name="f00000045" id="f00000045" type="computed" required="false" read-only="false" value-expression="myForm.F00000045_h">
+        <label label-style="prefix">F00000045:</label>
+        <title>F00000045</title>
+      </field>
+      <field name="f00000066" id="f00000066" type="computed" required="false" read-only="false" value-expression="myForm.F00000066_h">
+        <label label-style="prefix">F00000066:</label>
+        <title>F00000066</title>
+      </field>
+      <field name="f00000014" id="f00000014" type="computed" required="false" read-only="false" value-expression="myForm.F00000014_h">
+        <label label-style="prefix">F00000014:</label>
+        <title>F00000014</title>
+      </field>
+    </group>
+    <group>
+      <title>Kontaktdaten</title>
+      <field name="F00000069h" id="f00000069h" type="text" required="false" aux="true" read-only="false" validation-pattern="/(^\s*$)|(^(^([0(+][0-9\.-\/ ()]{7,})$)$)/" default-value-expression="isSKB() ? getSKBTelefon() : &quot;&quot;">
+        <label label-style="prefix">Telefon</label>
+        <title>Telefon</title>
+        <validation-message>Bitte geben Sie eine valide Telefonnummer ein</validation-message>
+      </field>
+      <field name="F00000071h" id="f00000071h" type="text" required="false" aux="true" read-only="false" validation-expression="(/^\s*$/.test(value))||(/* E-Mail-Adresse mit MX-Prüfung */ assistants.validate.checkEmailAddress(value, true))" default-value-expression="isSKB() ? getSKBEmail() : &quot;&quot;">
+        <label label-style="prefix">E-Mail-Adresse</label>
+        <title>E-Mail</title>
+        <validation-message>Dies ist keine gültige E-Mail-Adresse</validation-message>
+      </field>
+      <field name="f00000069" id="f00000069" type="computed" required="false" read-only="false" value-expression="myForm.F00000069h">
+        <label label-style="prefix">F00000069:</label>
+        <title>F00000069</title>
+      </field>
+      <field name="f00000071" id="f00000071" type="computed" required="false" read-only="false" value-expression="myForm.F00000071h">
+        <label label-style="prefix">F00000071:</label>
+        <title>F00000071</title>
+      </field>
+    </group>
+    <group style-class="rbs">
+      <title>Adressdaten</title>
+      <resource id="C00000009" location="js:{myForm.transaction ? 'vfs:///root/intelliForm-Mandanten/default/Ressourcen/xml/staat_2019-04-01.xml' : '/WEB-INF/data/staat_2019-04-01.xml' }" range="CONTEXT"/>
+      <infobox name="Infokasten"/>
+      <field name="onlyberlin" id="onlyberlin" type="text" required="false" aux="true" read-only="false" style-class="2_hide" default-value-expression="onlyBerlin()">
+        <label>onlyberlin</label>
+        <title>onlyberlin</title>
+      </field>
+      <field name="urlrbsdata" id="urlrbsdata" type="text" required="false" aux="true" read-only="false" style-class="2_hide" default-value-expression="geturlrbsdata()">
+        <label>urlrbsdata</label>
+        <title>urlrbsdata</title>
+      </field>
+      <field name="urlrbsstrliste" id="urlrbsstrliste" type="text" required="false" aux="true" read-only="false" style-class="2_hide" default-value-expression="geturlrbsstrliste()">
+        <label>urlrbsstrliste</label>
+        <title>urlrbsstrliste</title>
+      </field>
+      <field name="iseid" id="iseid" type="text" required="false" read-only="false" style-class="2_hide" default-value-expression="{myForm.forcedeid}">
+        <label label-style="prefix">iseid:</label>
+        <title>iseid</title>
+      </field>
+      <infobox name="infoboxeid" condition="iseID()" style-class="iseid">
+        <display-text><![CDATA[<p>{{getaddressdata()}}</p>]]></display-text>
+      </infobox>
+      <field name="objtype" id="objtype" type="choice" required="false" read-only="false" repeated="false" style-class="2_hide" control-style="combobox" default-value="'*STRASSE*" live="true">
+        <label>Objekttyp</label>
+        <title>objtype</title>
+        <option>*STRASSE*</option>
+        <option>AUTOBAHN</option>
+        <option>AUTOBAHNABSCHNITT</option>
+        <option>BAHNHOF</option>
+        <option>BRUECKE</option>
+        <option>BRUECKE_IN_PARK</option>
+        <option>FLUGHAFEN</option>
+        <option>FORST</option>
+        <option>FORSTAMT</option>
+        <option>FUSS-/RADWEG</option>
+        <option>FUSSGAENGERBRUECKE</option>
+        <option>GEWAESSER</option>
+        <option>GRUENANLAGE</option>
+        <option>HALBINSEL</option>
+        <option>INSEL</option>
+        <option>KLEINGARTENANLAGE</option>
+        <option>OBJEKT</option>
+        <option>OERTL.BEGRIFF</option>
+        <option>PARK</option>
+        <option>PARKPLATZ</option>
+        <option>PLATZ</option>
+        <option>PLATZ_IN_FORST</option>
+        <option>PRIVATSTRASSE</option>
+        <option>SCHLEUSE</option>
+        <option>SIEDLUNG</option>
+        <option>SPORTSTAETTE</option>
+        <option>STADTBAHNBOGEN</option>
+        <option>STRASSE</option>
+        <option>STRASSE_IN_FORST</option>
+        <option>STRASSE_IN_KGA</option>
+        <option>STRASSE_IN_PARK</option>
+        <option>TUNNEL</option>
+        <option>VERWALTUNGSWEG</option>
+        <option>WALDWEG</option>
+        <option>WASSERWERK</option>
+        <option>WOHNSCHIFF</option>
+        <option>ZUFAHRT</option>
+      </field>
+      <field name="F00000053h" id="f00000053h" type="text" required="true" aux="true" read-only="false" style-class="2_hide_eid" default-value-expression="iseID() ? geteIDStreetName() : isSKB() ? getSKBStreet() : &quot;&quot;">
+        <label label-style="prefix">Straße</label>
+        <title>strname</title>
+      </field>
+      <field name="hnrh" id="hnrh" type="text" required="false" aux="true" read-only="false" validation-expression="(/^\s*$/.test(value))||(myForm.objtype.includes(&quot;STRASSE&quot;) == true &amp;&amp; value.length == 0 ? false : true)" style-class="width-xs 2_hide_eid" default-value-expression="(iseID()) ? geteIDStreetNr() + geteIDStreetNrExt() : (isSKB()) ? getSKBStreetNr() + getSKBStreetExt(): &quot;&quot;">
+        <label label-style="prefix">Hausnummer</label>
+        <title>hnrh</title>
+        <validation-message>Bitte wählen Sie eine Hausnummer aus!</validation-message>
+      </field>
+      <field name="F00000016h" id="f00000016h" type="text" required="false" aux="true" read-only="false" style-class="2_hide" default-value-expression="(iseID()) ? geteIDStreetNr() : (isSKB()) ? getSKBStreetNr() : &quot;&quot;">
+        <label label-style="prefix">hausnr</label>
+        <title>hausnr</title>
+      </field>
+      <field name="F00000084h" id="f00000084h" type="text" required="false" aux="true" read-only="false" style-class="2_hide" default-value-expression="(iseID()) ? geteIDStreetNrExt() : (isSKB()) ? getSKBStreetExt() : &quot;&quot;">
+        <label label-style="prefix">hausnrz</label>
+        <title>hausnrz</title>
+      </field>
+      <field name="bisf00000016" id="bisf00000016" type="text" required="false" read-only="false" style-class="width-xs 2_hide_eid">
+        <label label-style="prefix">Hausnummer (bis)</label>
+        <title>tohnr</title>
+      </field>
+      <field name="adrzs" id="adrzs" type="text" required="false" read-only="false" style-class="2_hide_eid">
+        <label label-style="prefix">weiterer Adresshinweis</label>
+        <title>adrzs</title>
+        <outro><![CDATA[<p><abbr title="zum Beispiel">z. B.</abbr> Hinterhof</p>]]></outro>
+      </field>
+      <field name="F00000054h" id="f00000054h" type="text" required="true" aux="true" read-only="false" style-class="width-xs 2_hide_eid" default-value-expression="(iseID()) ? geteIDPLZ() : (isSKB()) ? getSKBPLZ() : &quot;&quot;">
+        <label label-style="prefix">Postleitzahl</label>
+        <title>plz</title>
+      </field>
+      <field name="otnameh" id="otnameh" type="text" required="false" aux="true" read-only="false" style-class="2_hide" default-value-expression="callSKBeIDotname()">
+        <label label-style="prefix">Ortsteil</label>
+        <title>otnameh</title>
+      </field>
+      <field name="bzrnameh" id="bzrnameh" type="text" required="false" aux="true" read-only="false" style-class="2_hide" default-value-expression="callSKBeIDbezname()">
+        <label label-style="prefix">Bezirk</label>
+        <title>bzrnameh</title>
+      </field>
+      <field name="otnrh" id="otnrh" type="text" required="false" aux="true" read-only="false" style-class="2_hide" default-value-expression="callSKBeIDotnr()">
+        <label>otnrh</label>
+        <title>otnrh</title>
+      </field>
+      <field name="beznrh" id="beznrh" type="text" required="false" aux="true" read-only="false" style-class="2_hide" default-value-expression="callSKBeIDbeznr()">
+        <label label-style="prefix">beznrh</label>
+        <title>beznrh</title>
+      </field>
+      <field name="strnrh" id="strnrh" type="text" required="false" aux="true" read-only="false" style-class="2_hide" default-value-expression="callSKBeIDstrnr()">
+        <label label-style="prefix">strnrh</label>
+        <title>strnrh</title>
+      </field>
+      <field name="F00000035h" id="f00000035h" type="text" required="true" aux="true" read-only="false" style-class="2_hide_eid" default-value-expression="setCityeIDSKB()">
+        <label label-style="prefix">Ort</label>
+        <title>Ort</title>
+      </field>
+      <field name="landh" id="landh" type="choice" required="false" aux="true" read-only="false" repeated="false" style-class="2_ro 2_hide_eid" default-value-expression="prefillLand()">
+        <label label-style="prefix">Land</label>
+        <title>land</title>
+        <option value="">---bitte auswählen---</option>
+        <options src="urn:xmlid:C00000009" xpath-select="/*/SimpleCodeList/Row" xpath-text="Value[@ColumnRef=&quot;Staatsname_kurz&quot;]/SimpleValue" xpath-value="Value[@ColumnRef=&quot;DESTATIS_Schluessel_Staat&quot;]/SimpleValue"/>
+      </field>
+      <field name="etrs89_xh" id="etrs89_xh" type="text" required="false" aux="true" read-only="false" style-class="2_hide" default-value-expression="callSKBeIDetrs89x()">
+        <label>etrs89_xh</label>
+        <title>etrs89_xh</title>
+      </field>
+      <field name="etrs89_yh" id="etrs89_yh" type="text" required="false" aux="true" read-only="false" style-class="2_hide" default-value-expression="callSKBeIDetrs89y()">
+        <label>etrs89_yh</label>
+        <title>etrs89_yh</title>
+      </field>
+      <field name="f00000053" id="f00000053" type="computed" required="false" read-only="false" value-expression="(iseID()) ? geteIDStreetName() : myForm.F00000053h">
+        <label label-style="prefix">F00000053:</label>
+        <title>F00000053</title>
+      </field>
+      <field name="hnr" id="hnr" type="computed" required="false" read-only="false" value-expression="(iseID()) ? geteIDStreetNr() + geteIDStreetNrExt() : myForm.hnrh">
+        <label label-style="prefix">hnr:</label>
+        <title>hnr</title>
+      </field>
+      <field name="f00000016" id="f00000016" type="computed" required="false" read-only="false" value-expression="(iseID()) ? geteIDStreetNr() : myForm.F00000016h">
+        <label label-style="prefix">F00000016:</label>
+        <title>F00000016</title>
+      </field>
+      <field name="f00000084" id="f00000084" type="computed" required="false" read-only="false" value-expression="(iseID()) ? geteIDStreetNrExt() : myForm.F00000084h">
+        <label label-style="prefix">F00000084:</label>
+        <title>F00000084</title>
+      </field>
+      <field name="f00000054" id="f00000054" type="computed" required="false" read-only="false" value-expression="(iseID()) ? geteIDPLZ() : myForm.F00000054h">
+        <label label-style="prefix">F00000054:</label>
+        <title>F00000054</title>
+      </field>
+      <field name="otname" id="otname" type="computed" required="false" read-only="false" value-expression="(iseID()) ? callSKBeIDotname() : myForm.otnameh">
+        <label label-style="prefix">otname:</label>
+        <title>otname</title>
+      </field>
+      <field name="bzrname" id="bzrname" type="computed" required="false" read-only="false" value-expression="(iseID()) ? callSKBeIDbezname() : myForm.bzrname">
+        <label label-style="prefix">bzrname:</label>
+        <title>bzrname</title>
+      </field>
+      <field name="otnr" id="otnr" type="computed" required="false" read-only="false" value-expression="(iseID()) ? callSKBeIDotnr() : myForm.otnrh">
+        <label label-style="prefix">otnr:</label>
+        <title>otnr</title>
+      </field>
+      <field name="bzrnr" id="bzrnr" type="computed" required="false" read-only="false" value-expression="(iseID()) ? callSKBeIDbeznr() : myForm.beznrh">
+        <label label-style="prefix">bzrnr:</label>
+        <title>bzrnr</title>
+      </field>
+      <field name="strnr" id="strnr" type="computed" required="false" read-only="false" value-expression="(iseID()) ? callSKBeIDstrnr() : myForm.strnrh">
+        <label label-style="prefix">strnr:</label>
+        <title>strnr</title>
+      </field>
+      <field name="f00000035" id="f00000035" type="computed" required="false" read-only="false" value-expression="(iseID()) ? geteIDCity() : myForm.F00000035h">
+        <label label-style="prefix">F00000035:</label>
+        <title>F00000035</title>
+      </field>
+      <field name="land" id="land" type="computed" required="false" read-only="false" value-expression="(iseID()) ? geteIDCountry() : myForm.landh">
+        <label label-style="prefix">land:</label>
+        <title>land</title>
+      </field>
+      <field name="etrs89_x" id="etrs89_x" type="computed" required="false" read-only="false" value-expression="(iseID()) ? callSKBeIDetrs89x() : myForm.etrs89_xh">
+        <label label-style="prefix">etrs89_x:</label>
+        <title>etrs89_x</title>
+      </field>
+      <field name="etrs89_y" id="etrs89_y" type="computed" required="false" read-only="false" value-expression="(iseID()) ? callSKBeIDetrs89y() : myForm.etrs89_yh">
+        <label label-style="prefix">etrs89_y:</label>
+        <title>etrs89_y</title>
+      </field>
+      <field name="rbs_valid" id="rbs_valid" type="computed" required="false" read-only="false" value-expression="validateAddress()">
+        <label label-style="prefix">rbs_valid:</label>
+        <title>rbs_valid</title>
+      </field>
+      <field name="bezirk_nummer" id="bezirk_nummer" type="computed" required="false" read-only="false" value-expression="myForm.bzrnr">
+        <label label-style="prefix">bezirk_nummer:</label>
+        <title>bezirk_nummer</title>
+      </field>
+    </group>
+    <rule validation-expression="(isBerlin()) ? validateAddress() : true" name="rbsrule_streng.1430">
+      <validation-message>Die von Ihnen angegebene Adresse ist in unserem System nicht hinterlegt und kann nicht gefunden werden.</validation-message>
+    </rule>
+    <rule validation-expression="(isBerlin()) ? validateAddress() : true" validation-mode="loose" name="rbsrule_locker.1425">
+      <validation-message><![CDATA[Die von Ihnen angegebene Adresse ist in unserem System nicht hinterlegt und kann nicht gefunden werden.<br/>Im nächsten Schritt können Sie Angaben zum Bezirk und Ortsteil machen um Ihren Antrag zu vervollständigen.]]></validation-message>
+    </rule>
+  </page>
+  <flow condition="rbsrule() == true">
+    <page name="rbs_bez" path="rbs_bez" id="rbs_bez" model-src="rbs_bez.1436!Bezirk.858">
+      <title>Angaben zum Bezirk und Ortsteil</title>
+      <intro><![CDATA[<p>{{rbsrule()}} {{myForm.f00000035}} iseid: {{iseID()}} eidcity: {{geteIDCity()}} rbs_valid: {{myForm.rbs_valid}}</p>]]></intro>
+      <resource id="bezirke" location="js:{myForm.transaction ? 'vfs:///root/intelliForm-Mandanten/default/Ressourcen/xml/rbs-bez-liste-xml.xml' : '/WEB-INF/data/rbs-bez-liste-xml.xml' }"/>
+      <field name="beznum" id="beznum" type="choice" required="true" aux="true" read-only="false" repeated="false" live="true">
+        <label>Bezirk</label>
+        <title>beznum</title>
+        <option value="">---wählen Sie einen Bezirk aus ---</option>
+        <options src="urn:xmlid:bezirke" xpath-select="/*/rbs:rbs-bez" xpath-text="rbs:bezname" xpath-value="@beznr">
+          <namespace prefix="rbs">https://fbinter.stadt-berlin.de/rbs</namespace>
+          <sort>rbs:bezname</sort>
+        </options>
+      </field>
+      <field name="otnum" id="otnum" type="choice" required="false" aux="true" read-only="false" repeated="false" live="true">
+        <label>Ortsteil</label>
+        <title>otnum</title>
+        <option value="">---wählen Sie einen Ortsteil aus ---</option>
+        <options src="urn:xmlid:bezirke" xpath-select="//rbs:rbs-bez[@beznr=$selectedBezirk]/rbs:rbs-ot" xpath-text="rbs:otname" xpath-value="@otnr">
+          <param name="selectedBezirk">myForm.beznum</param>
+          <namespace prefix="rbs">https://fbinter.stadt-berlin.de/rbs</namespace>
+          <sort>rbs:otname</sort>
+        </options>
+      </field>
+      <field name="selectdistrict" id="selectdistrict" type="computed" required="false" read-only="false" value-expression="selectDistrict()">
+        <label label-style="prefix">selectDistrict:</label>
+        <title>selectDistrict</title>
+      </field>
+    </page>
+  </flow>
+</dialog>
