@@ -73,3 +73,33 @@ Das im Baustein enthaltene xml-Feld ""urlrbs"" muss, trotz des im Attribut hinte
 Bei der Übernahme von eID-Adressdaten ist im Gegensatz zu den SKB1-Adressdaten, eine Anpassung durch den Nutzer im Antragsassistenten nicht möglich. Die eID-Adressdaten können technisch nicht aus dem Antrag gelöscht werden. Zur Vermeidung des visuellen Verlustes der Adressdaten nach einem Rücksprung im Assistenten zur eID-Funktion, sollte im Modell ein separates eID-Feld mit der Funktion ""js:{iseID()}"" hinterlegt werden.
 "										
 			
+# rbs_bez
+<h2>Elemente</h2>
+
+Im Assistenten eingeblendete Adressfelder: Bezirk, Ortsteil
+
+
+<h2>Varianten</h2>
+keine Varianten
+
+
+<h2>Verwendung</h2>
+
+Der Baustein wird in Antragsassistenten eingebaut, in denen nach einer ungültigen RBS-Adressvalidierung (siehe rbs_baustein_req) eine Abfrage zum Bezirk und zum Ortsteil erfolgen soll. 
+
+Voraussetzung: Integration des Bausteins rbs_baustein_req
+
+Folgende Schritte sind zur Integration des Bausteins durchzuführen:
+
+1. Composer-Datei des Antragsassistenten öffnen und den Baustein ""rbs_bez"" als Referenz einfügen
+
+2. Den Baustein mit den entsprechenden Satz verbinden (Association) und Gliederungsnummer vergeben
+
+
+3. Regel zur weichen Validierung der berliner Anschrift integrieren
+
+Außerhalb des Bausteins ist eine Regel mit folgenden Attributwerten in das Modell zu integrieren:
+
+Prüfausdruck: ""validateAddress()""
+Prüfmeldung: ""Die von Ihnen angegebene Adresse ist in unserem System nicht hinterlegt und kann nicht gefunden werden. Im nächsten Schritt können Sie Angaben zum Bezirk und Ortsteil machen um Ihren Antrag zu vervollständigen.""
+Prüfart: ""locker""
