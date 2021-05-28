@@ -354,13 +354,27 @@ function validateAddress(){
             return false;
         }else if (myForm.f00000035.toLowerCase() == "berlin") {
             if (myForm.bzrnr != '') {
-                res = true;
+                var adr = callbzrinfo();
+            myForm.bzrnameh = adr.bzrname;
+            myForm.otnrh = adr.otname;
+            res = true;
             }
         }else{
             res = false
         }    
     }
 	return res;
+}
+
+function callbzrinfo(){
+    var res;
+    var strname = myForm.F00000053h;
+    var hnr = myForm.F00000016h;
+    var hnrz = myForm.F00000084h;
+    var plz = myForm.F00000054h;
+    var city = "berlin";
+    res = callCheckAddress(strname,hnr,hnrz,plz,city)
+    return res;
 }
 
 function rbsrule(){

@@ -7,7 +7,6 @@
   </options>
   <page name="Bürger SKB1" path="buerger-skb1" id="buerger-skb1" model-src="Bürger SKB1.1289">
     <title>Bürger SKB1</title>
-    <resource id="rbsurl" location="js:{myForm.transaction ? 'vfs:///root/intelliForm-Mandanten/default/Ressourcen/xml/rbs_url.xml' : '/WEB-INF/data/rbs_url.xml' }" range="CONTEXT"/>
     <group>
       <title>Personendaten</title>
       <documentation><![CDATA[<p>G00000188</p>]]></documentation>
@@ -97,6 +96,7 @@
     <group style-class="rbs">
       <title>Adressdaten</title>
       <resource id="C00000009" location="js:{myForm.transaction ? 'vfs:///root/intelliForm-Mandanten/default/Ressourcen/xml/staat_2019-04-01.xml' : '/WEB-INF/data/staat_2019-04-01.xml' }" range="CONTEXT"/>
+      <resource id="rbsurl" location="js:{myForm.transaction ? 'vfs:///root/intelliForm-Mandanten/default/Ressourcen/xml/rbs_url.xml' : '/WEB-INF/data/rbs_url.xml' }" range="CONTEXT"/>
       <infobox name="Infokasten"/>
       <field name="onlyberlin" id="onlyberlin" type="text" required="false" aux="true" read-only="false" style-class="2_hide" default-value-expression="onlyBerlin()">
         <label>onlyberlin</label>
@@ -250,7 +250,7 @@
         <label label-style="prefix">otname:</label>
         <title>otname</title>
       </field>
-      <field name="bzrname" id="bzrname" type="computed" required="false" read-only="false" value-expression="(iseID()) ? callSKBeIDbezname() : myForm.bzrname">
+      <field name="bzrname" id="bzrname" type="computed" required="false" read-only="false" value-expression="(iseID()) ? callSKBeIDbezname() : myForm.bzrnameh">
         <label label-style="prefix">bzrname:</label>
         <title>bzrname</title>
       </field>
@@ -301,7 +301,6 @@
   <flow condition="rbsrule() == true">
     <page name="rbs_bez" path="rbs_bez" id="rbs_bez" model-src="rbs_bez.1436!Bezirk.858">
       <title>Angaben zum Bezirk und Ortsteil</title>
-      <intro><![CDATA[<p>{{rbsrule()}} {{myForm.f00000035}} iseid: {{iseID()}} eidcity: {{geteIDCity()}} rbs_valid: {{myForm.rbs_valid}}</p>]]></intro>
       <resource id="bezirke" location="js:{myForm.transaction ? 'vfs:///root/intelliForm-Mandanten/default/Ressourcen/xml/rbs-bez-liste-xml.xml' : '/WEB-INF/data/rbs-bez-liste-xml.xml' }"/>
       <field name="beznum" id="beznum" type="choice" required="true" aux="true" read-only="false" repeated="false" live="true">
         <label>Bezirk</label>

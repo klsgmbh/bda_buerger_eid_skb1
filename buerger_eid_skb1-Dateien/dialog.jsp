@@ -38,7 +38,7 @@ static {
       <script charset="utf-8" src="_plugins/theme-html5/script.js?-8236014590501371310" type="text/javascript"/>
   <!--plugin:ui-rbs2-->
         
-      <script src="_plugins/ui-rbs2/ui-rbs2.js?4177272317422552621" type="text/javascript"/>
+      <script src="_plugins/ui-rbs2/ui-rbs2.js?-5542087037542415470" type="text/javascript"/>
         
       <script src="_plugins/ui-rbs2/bsnrbs.AutoSuggest_2.1.3.js?5851351268818775181" type="text/javascript"/>
 		
@@ -142,7 +142,6 @@ static {
                                  <span class="accessibility">Diese Seite enthält Pflichtfelder.</span>
                               </em>
                            </p>
-                           <cit:xmlResource id="rbsurl" src="js:{myForm.transaction ? 'vfs:///root/intelliForm-Mandanten/default/Ressourcen/xml/rbs_url.xml' : '/WEB-INF/data/rbs_url.xml' }" scope="CONTEXT"/>
                            <section class="group narrow">
                               <header>
                                  <h3>Personendaten</h3>
@@ -330,11 +329,11 @@ static {
                                        </span>
                                     </cit:inputLabel>
                                     <div class="inputcontainer">
-                                       <cit:inputDate name="F00000066_h" class="tiny focus-mark-before" ariaLabelledby="$label-id $error-ids d0e99_date_format_hint" showChooser="true" onDefault="iseID() ? geteIDDateOfBirth() : isSKB() ? (myForm.user.dateofbirth) ? getSKBDate(myForm.user.dateofbirth) : &#34;&#34; : &#34;&#34;"/>
+                                       <cit:inputDate name="F00000066_h" class="tiny focus-mark-before" ariaLabelledby="$label-id $error-ids d0e97_date_format_hint" showChooser="true" onDefault="iseID() ? geteIDDateOfBirth() : isSKB() ? (myForm.user.dateofbirth) ? getSKBDate(myForm.user.dateofbirth) : &#34;&#34; : &#34;&#34;"/>
                                     </div>
                                     <div class="tooltip_overlay">
-                                       <div class="tooltip_text" id="d0e99_tooltip">
-                                          <p class="date_format_hint" id="d0e99_date_format_hint">Bitte geben Sie hier ein Datum im Format TT.MM.JJJJ ein.</p>
+                                       <div class="tooltip_text" id="d0e97_tooltip">
+                                          <p class="date_format_hint" id="d0e97_date_format_hint">Bitte geben Sie hier ein Datum im Format TT.MM.JJJJ ein.</p>
                                           <button class="close" type="button" onclick="return false;">
                                              <span class="icon-close" aria-hidden="true"/>
                                              <span class="accessibility">Schließen</span>
@@ -474,6 +473,7 @@ static {
                                  <h3>Adressdaten</h3>
                               </header>
                               <cit:xmlResource id="C00000009" src="js:{myForm.transaction ? 'vfs:///root/intelliForm-Mandanten/default/Ressourcen/xml/staat_2019-04-01.xml' : '/WEB-INF/data/staat_2019-04-01.xml' }" scope="CONTEXT"/>
+                              <cit:xmlResource id="rbsurl" src="js:{myForm.transaction ? 'vfs:///root/intelliForm-Mandanten/default/Ressourcen/xml/rbs_url.xml' : '/WEB-INF/data/rbs_url.xml' }" scope="CONTEXT"/>
                               <section class="infobox narrow"/>
                               <section class="block narrow 2_hide" data-comments='<%= getComments(pageContext.getAttribute("form"), "onlyberlin") %>'>
                                  <cit:conditional test="!assistants.request.isValid('onlyberlin')">
@@ -1221,7 +1221,7 @@ static {
                               <cit:inputComputed name="f00000084" value="(iseID()) ? geteIDStreetNrExt() : myForm.F00000084h"/>
                               <cit:inputComputed name="f00000054" value="(iseID()) ? geteIDPLZ() : myForm.F00000054h"/>
                               <cit:inputComputed name="otname" value="(iseID()) ? callSKBeIDotname() : myForm.otnameh"/>
-                              <cit:inputComputed name="bzrname" value="(iseID()) ? callSKBeIDbezname() : myForm.bzrname"/>
+                              <cit:inputComputed name="bzrname" value="(iseID()) ? callSKBeIDbezname() : myForm.bzrnameh"/>
                               <cit:inputComputed name="otnr" value="(iseID()) ? callSKBeIDotnr() : myForm.otnrh"/>
                               <cit:inputComputed name="bzrnr" value="(iseID()) ? callSKBeIDbeznr() : myForm.beznrh"/>
                               <cit:inputComputed name="strnr" value="(iseID()) ? callSKBeIDstrnr() : myForm.strnrh"/>

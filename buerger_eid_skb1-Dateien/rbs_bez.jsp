@@ -38,7 +38,7 @@ static {
       <script charset="utf-8" src="_plugins/theme-html5/script.js?-8236014590501371310" type="text/javascript"/>
   <!--plugin:ui-rbs2-->
         
-      <script src="_plugins/ui-rbs2/ui-rbs2.js?4177272317422552621" type="text/javascript"/>
+      <script src="_plugins/ui-rbs2/ui-rbs2.js?-5542087037542415470" type="text/javascript"/>
         
       <script src="_plugins/ui-rbs2/bsnrbs.AutoSuggest_2.1.3.js?5851351268818775181" type="text/javascript"/>
 		
@@ -127,10 +127,8 @@ static {
                                  <span class="accessibility">Diese Seite enthält Pflichtfelder.</span>
                               </em>
                            </p>
-                           <header class="intro"><p><cit:display html="true" errorReplacement="―" expression="My.undefinedReplacement(rbsrule())"/> 
-                              <cit:display html="true" errorReplacement="―" expression="My.undefinedReplacement(myForm.f00000035)"/> iseid: <cit:display html="true" errorReplacement="―" expression="My.undefinedReplacement(iseID())"/> eidcity: <cit:display html="true" errorReplacement="―" expression="My.undefinedReplacement(geteIDCity())"/> rbs_valid: <cit:display html="true" errorReplacement="―" expression="My.undefinedReplacement(myForm.rbs_valid)"/></p></header>
                            <cit:xmlResource id="bezirke" src="js:{myForm.transaction ? 'vfs:///root/intelliForm-Mandanten/default/Ressourcen/xml/rbs-bez-liste-xml.xml' : '/WEB-INF/data/rbs-bez-liste-xml.xml' }"/>
-                           <section class="block live narrow" data-comments='<%= getComments(pageContext.getAttribute("form"), "beznum") %>' data-live-stay="stay_nonval_d0e716">
+                           <section class="block live narrow" data-comments='<%= getComments(pageContext.getAttribute("form"), "beznum") %>' data-live-stay="stay_nonval_d0e713">
                               <cit:conditional test="!assistants.request.isValid('beznum')">
                                  <p class="errorText v2">
                                     <span class="icon-warning-sign" aria-hidden="true"/>
@@ -171,11 +169,11 @@ static {
                                     </cit:inputSelect>
                                  </div>
                               </div>
-                              <cit:inputSubmit type="stay.nonval.d0e716" id="stay.nonval.d0e716" value="OK" title="Klicken Sie auf OK, um die Seite zu aktualisieren."/>
-                              <script type="text/javascript">document.getElementById('stay_nonval_d0e716').style.display='none';</script>
+                              <cit:inputSubmit type="stay.nonval.d0e713" id="stay.nonval.d0e713" value="OK" title="Klicken Sie auf OK, um die Seite zu aktualisieren."/>
+                              <script type="text/javascript">document.getElementById('stay_nonval_d0e713').style.display='none';</script>
                               <cit:script>_unmask(myForm, "beznum", "string");</cit:script>
                            </section>
-                           <section class="block live narrow" data-comments='<%= getComments(pageContext.getAttribute("form"), "otnum") %>' data-live-stay="stay_nonval_d0e737">
+                           <section class="block live narrow" data-comments='<%= getComments(pageContext.getAttribute("form"), "otnum") %>' data-live-stay="stay_nonval_d0e734">
                               <cit:conditional test="!assistants.request.isValid('otnum')">
                                  <p class="errorText v2">
                                     <span class="icon-warning-sign" aria-hidden="true"/>
@@ -213,34 +211,34 @@ static {
                                     </cit:inputSelect>
                                  </div>
                               </div>
-                              <cit:inputSubmit type="stay.nonval.d0e737" id="stay.nonval.d0e737" value="OK" title="Klicken Sie auf OK, um die Seite zu aktualisieren."/>
-                              <script type="text/javascript">document.getElementById('stay_nonval_d0e737').style.display='none';</script>
+                              <cit:inputSubmit type="stay.nonval.d0e734" id="stay.nonval.d0e734" value="OK" title="Klicken Sie auf OK, um die Seite zu aktualisieren."/>
+                              <script type="text/javascript">document.getElementById('stay_nonval_d0e734').style.display='none';</script>
                               <cit:script>_unmask(myForm, "otnum", "string");</cit:script>
                            </section>
                            <cit:inputComputed name="selectdistrict" value="selectDistrict()"/>
                         </div>
                         <nav id="roadmap_bottom" class="roadmap">
                            <h3 class="accessibility">Dialogverlauf</h3>
-                           <ul class="icons"><% final boolean unvisited_d19e2 = !isVisited(session, "buerger-skb1"); %><li class='past<%= unvisited_d19e2 ? " unvisited" : "" %>'><% if (pageProcessor.getSyncPoint("buerger-skb1") != null) { %><span class="item clickable" data-submit-value="resync.buerger-skb1">
+                           <ul class="icons"><% final boolean unvisited_d13e2 = !isVisited(session, "buerger-skb1"); %><li class='past<%= unvisited_d13e2 ? " unvisited" : "" %>'><% if (pageProcessor.getSyncPoint("buerger-skb1") != null) { %><span class="item clickable" data-submit-value="resync.buerger-skb1">
                                     <a href="" class="label">
                                        <span class="labeltext">Bürger SKB1</span>
-                                       <span class="labelicon" title='<%= unvisited_d19e2 ? "Zurückliegende Seite (nicht besucht)" : "Zurückliegende Seite" %>'>
-                                          <span class="accessibility"><%= unvisited_d19e2 ? "Zurückliegende Seite (nicht besucht)" : "Zurückliegende Seite" %></span>
+                                       <span class="labelicon" title='<%= unvisited_d13e2 ? "Zurückliegende Seite (nicht besucht)" : "Zurückliegende Seite" %>'>
+                                          <span class="accessibility"><%= unvisited_d13e2 ? "Zurückliegende Seite (nicht besucht)" : "Zurückliegende Seite" %></span>
                                        </span>
                                     </a>
                                  </span><% } else { %><span class="item">
                                     <span class="label">
                                        <span class="labeltext">Bürger SKB1</span>
-                                       <span class="labelicon" title='<%= unvisited_d19e2 ? "Zurückliegende Seite (nicht besucht)" : "Zurückliegende Seite" %>'>
-                                          <span class="accessibility"><%= unvisited_d19e2 ? "Zurückliegende Seite (nicht besucht)" : "Zurückliegende Seite" %></span>
+                                       <span class="labelicon" title='<%= unvisited_d13e2 ? "Zurückliegende Seite (nicht besucht)" : "Zurückliegende Seite" %>'>
+                                          <span class="accessibility"><%= unvisited_d13e2 ? "Zurückliegende Seite (nicht besucht)" : "Zurückliegende Seite" %></span>
                                        </span>
                                     </span>
-                                 </span><% } %></li><% final boolean unvisited_d19e4 = !isVisited(session, "rbs_bez"); %><li class='present<%= unvisited_d19e4 ? " unvisited" : "" %>'>
+                                 </span><% } %></li><% final boolean unvisited_d13e4 = !isVisited(session, "rbs_bez"); %><li class='present<%= unvisited_d13e4 ? " unvisited" : "" %>'>
                                  <span class="item">
                                     <span class="label">
                                        <span class="labeltext">Angaben zum Bezirk und Ortsteil</span>
-                                       <span class="labelicon" title='<%= unvisited_d19e4 ? "Aktuelle Seite (nicht besucht)" : "Aktuelle Seite" %>'>
-                                          <span class="accessibility"><%= unvisited_d19e4 ? "Aktuelle Seite (nicht besucht)" : "Aktuelle Seite" %></span>
+                                       <span class="labelicon" title='<%= unvisited_d13e4 ? "Aktuelle Seite (nicht besucht)" : "Aktuelle Seite" %>'>
+                                          <span class="accessibility"><%= unvisited_d13e4 ? "Aktuelle Seite (nicht besucht)" : "Aktuelle Seite" %></span>
                                        </span>
                                     </span>
                                  </span>
