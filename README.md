@@ -45,7 +45,7 @@ Wird im Assistenten oder an ausgewählten Stellen ausschließlich mit berliner A
 
 Den Namen der Dialogseite erhält man auf der jeweiligen Dialogseite im gestarteten Assistenten über den Browser bzw. über die Entwicklertools des Browsers. 
 
-Bsp. Firefox:
+<b>Bsp. Firefox:</b>
 Menü aufrufen: Web-Entwickler/Werkzeuge ein- ausblenden
 Auf dem Reiter „Inspektor“ kann nun dem Tag <body id> der Name der Dialogseite entnommen werden.
 
