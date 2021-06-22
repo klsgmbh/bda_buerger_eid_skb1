@@ -339,29 +339,34 @@ function prefillLand(){
 // ---- und liefert die Bezirksnummer.
 function validateAddress(){
     var res = false
-    if (iseID()){
-        if (geteIDCity() != "berlin"){
-            return false;
-        }else if (geteIDCity().toLowerCase() == "berlin"){
-            if (myForm.bzrnr != '') {
-                res = true;
+    if (myForm.transaction){
+        if (iseID()){
+            if (geteIDCity() != "berlin"){
+                return false;
+            }else if (geteIDCity().toLowerCase() == "berlin"){
+                if (myForm.bzrnr != '') {
+                    var adr = callbzrinfo();
+                    myForm.bzrnameh = adr.bzrname;
+                    myForm.otnameh = adr.otname;
+                    res = true;
+                }
+            }else{
+                res = false
             }
         }else{
-            res = false
+            if (myForm.f00000035.toLowerCase() != "berlin"){
+                return false;
+            }else if (myForm.f00000035.toLowerCase() == "berlin") {
+                if (myForm.bzrnr != '') {
+                    var adr = callbzrinfo();
+                    myForm.bzrnameh = adr.bzrname;
+                    myForm.otnameh = adr.otname;
+                    res = true;
+                }
+            }else{
+                res = false
+            }    
         }
-    }else{
-        if (myForm.f00000035.toLowerCase() != "berlin"){
-            return false;
-        }else if (myForm.f00000035.toLowerCase() == "berlin") {
-            if (myForm.bzrnr != '') {
-                var adr = callbzrinfo();
-                myForm.bzrnameh = adr.bzrname;
-                myForm.otnameh = adr.otname;
-                res = true;
-            }
-        }else{
-            res = false
-        }    
     }
 	return res;
 }
